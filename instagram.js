@@ -1,13 +1,13 @@
-$(function () {
+$(function() {
 
-    $("#searchrealreal").click(function () {
-        var answer = $("#realsearch").val();
+    $("#btnsearch").click(function() {
+        var answer = $("#textsearch").val();
         insearch(answer);
     });
 
     function insearch(answer2) {
 
-        $.get(`https://www.instagram.com/explore/tags/${answer2}/?__a=1`, function (data, status) {
+        $.get(`https://www.instagram.com/explore/tags/${answer2}/?__a=1`, function(data, status) {
             console.log("\nStatus: " + status);
             console.log(data);
             $("#name").text(data.graphql.hashtag.name);
@@ -20,7 +20,7 @@ $(function () {
                 console.log(post.node.display_url);
 
                 var like = post.node.edge_liked_by.count;
-                var commentCount =post.node.edge_media_to_comment.count;
+                var commentCount = post.node.edge_media_to_comment.count;
                 var caption = post.node.edge_media_to_caption.edges[0].node.text;
                 var row = `<div class="col-4">
                                 <img src = "${post.node.display_url}" alt="" width='250px' height='250px'> 
